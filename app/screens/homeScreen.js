@@ -1,6 +1,7 @@
 import react from 'react';
 import { StyleSheet, Text, View, FlatList, StatusBar, TouchableHighlight } from 'react-native';
 import { citiesList } from '../data/citiesList';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default class HomeScreen extends react.Component
 {
@@ -67,7 +68,8 @@ export default class HomeScreen extends react.Component
           name: obj.name,
           country: country,
           temp: Math.ceil(r.temp),
-          type: obj.weather[0].main
+          type: obj.weather[0].main,
+          desc: 'Humidity: '+r.humidity+'% - '+obj.weather[0].main,
         };
         newList.push(city);
         this.setState({
@@ -89,6 +91,32 @@ export default class HomeScreen extends react.Component
     }
   }
 
+  getEmoji = (type) => {
+    if(type == 'Clouds') {
+      return '☁️';
+    }
+    else if(type == 'Clear') {
+      return '☀️';
+    }
+    else if(type == 'Haze') {
+      return '🌥';
+    } else if(type == 'Thunderstorm') {
+      return '⛈';
+    } else if(type == 'Rain') {
+      return '🌧';
+    } else if(type == 'Snow') {
+      return '❄️';
+    } else if(type == 'Mist') {
+      return '☁️';
+    } else if(type == 'Fog') {
+      return '🌫';
+    } else if(type == 'Drizzle') {
+      return '🌦';
+    } else {
+      '';
+    }
+  }
+
   render() {
 
     return(
@@ -97,7 +125,8 @@ export default class HomeScreen extends react.Component
           barStyle="default"
           backgroundColor="#1dafb"
         />
-        <Text style={styles.title}> City Weather </Text>
+        <Text style={styles.title}>
+        ☀️ City Weather </Text>
         <FlatList
           style={{width:'100%'}}
           data={this.state.list}
@@ -105,18 +134,30 @@ export default class HomeScreen extends react.Component
           onRefresh={this.loadNewTemps}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item, index}) => (
-            <View style={styles.row}>
-              <Text
-              style={[styles.temp,
-                (this.getTempRange(item.temp) == 'cold') ? styles.cold : styles.temp,
-                (this.getTempRange(item.temp) == 'medium') ? styles.medium : styles.temp,
-                (this.getTempRange(item.temp) == 'hot') ? styles.hot : styles.temp,
-                (this.getTempRange(item.temp) == 'vhot') ? styles.vhot : styles.temp,
+            <TouchableHighlight
+              onPress={
+                () => alert(item.desc)
+              }
+              underlayColor="white"
+            >
+              <LinearGradient
+                colors={['rgba(0,0,0,0.05)', 'rgba(0,0,0,0.05)', 'rgba(0,0,0,0.05)']}
+                start={[0, 0.5]}
+              >
+                <View style={styles.row}>
+                  <Text
+                  style={[styles.temp,
+                    (this.getTempRange(item.temp) == 'cold') ? styles.cold : styles.temp,
+                    (this.getTempRange(item.temp) == 'medium') ? styles.medium : styles.temp,
+                    (this.getTempRange(item.temp) == 'hot') ? styles.hot : styles.temp,
+                    (this.getTempRange(item.temp) == 'vhot') ? styles.vhot : styles.temp,
 
-                ]}
-              > {item.temp}°C </Text>
-              <Text style={styles.cityN}> {item.name} </Text>
-            </View>
+                    ]}
+                  > {this.getEmoji(item.type)} {item.temp}°C </Text>
+                  <Text style={styles.cityN}> {item.name} </Text>
+                </View>
+              </LinearGradient>
+            </TouchableHighlight>
           )}
 
         />
@@ -160,7 +201,10 @@ const styles = StyleSheet.create({
   },
   title: {
     width: '100%',
-    paddingTop: 40,
+    paddingTop: 20,
+    marginButtom: 20,
+    paddingButtom: 20,
+    lineHeight:20,
     alignItems: 'center',
     justifyContent: 'center',
     textAlign: 'center',
