@@ -1,0 +1,215 @@
+React Native & expo
+
+openweathermap.org
+	un ==> email
+	PW ===> ln+ls
+	Example of API call:
+https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=bdef2a67aba0ad1f25a6c19f447e6c4a
+https://api.openweathermap.org/data/2.5/find?q=London&units=metric&appid=5bbbc7d71e77fcb2e8f73357e4374aa9
+
+jsonViewer ==> jsonviewer.stack.hu 
+jsonformatter => jsonformatter.io
+
+Lesson 01 (Intro)
+
+Lesson 02()
+Lessong 03(who use it)
+	React Native ->Facebook(created and use), Instagram, Discord,Uber, Tesla, walmart, soundcloud.
+	Expo -> makes the development most faster. Expo SDK makes it easier to use cameras 
+		Expo is what makes it possible for you to use the same exact code for both android and iOS
+		Building and publishing. Expo makes it easy, can also handle all the certificates if you wish.
+		Makes live changes to you apps without having to go through an App Store review
+Lesson 04 Softwares to install.
+		Xcode —> install from app store
+		Expo —> install on phone
+		Code Editor
+		More ==> create-react-native-app & hyper .
+		help ==> https://facebook.github.io/react-native/docs/getting-started 
+				https://expo.io/tools 
+Lesson 05 Intro 
+		Fully Native app	
+		made up of  -> components, state, Props, styling 
+		Components
+			Built-in components, such as
+				View, Text, Image, TextInput, ScrollView, styleSheet, Button, Slider.
+		state ->Control the data shown, Adjust components, Call setState to change, Use alongside props. 
+		props —> property passed down from parent component 
+		styling => Style using Javascript, similar to CSS, Cascading class based system. 
+Lesson 06 Overview of React Native
+	props => style ==> <Text style={{color:’white’}}> Hello </Text> <View>  </View>
+	Tool ==> Snack.  ==> https://snack.expo.io 
+			Enables you to run code on device right away.
+			my un => kingkom001@yahoo.com
+				PW ==> like home.
+Lesson 07 ( Finding information)
+	Finding information —> 	https://facebook.github.io/react-native/docs/getting-started 
+
+Lesson 8 ()
+	we will be using this —> https://snack.expo.dev/@kingsman/7c3595?platform=ios
+Lessong 10 (state)
+	
+Lesson 11 (Installing Hyper for terminal command) Hyper is cool
+	https://hyper.is  
+		Hyper is a terminal app 
+——————————————————————————————————————————————————————
+Lession 12 (Create app in React Native using command line in Hyper)
+
+	install ==> npm install -g create-react-native-app  (this install the ability)
+		Create app-> create-react-native-app NameOfApp.  or create-react-native-app —use-npm NameOfApp. (to use npm instead of yarn)
+			using npm worked better than yarn.
+		Now running app if used npm => npm run web, npm run iOS, npm run android .
+		ones it is installed ==> start with yarn start, yarn android, yarn iOS, yarn web 
+		having issue running app. 
+			can ask create app using expo => expo init App-Name
+		issue installing CocoaPods, need to do the following 
+		run ==> brew install cocoaods (did not work)
+		Cd BasicApp/ios
+		npx pod-install
+	having issue with starting app (Command “expo” not found.)
+	resolve ==> 
+		Good solution
+			npm install —global expo-cli
+			Now run —> expo init AppName(if you want to use exp)ls
+	Issue —> cannot find  module ‘fs/promises’
+	Solution -> upgrade mode to version 14 or higher.
+	now run —> npm run web
+		Press a │ open Android
+		› Press i │ open iOS simulator
+		› Press w │ open web
+
+		› Press j │ open debugger
+		› Press r │ reload app
+		› Press m │ toggle menu
+
+		› Press ? │ show all commands
+	You are ready!!!!!!!!!!!!!
+
+	Running expo Go 
+	issue -> “there was a problem loading the requested app”
+		
+	Solution => If your url looks like this ==> exp://10.0.0.201:19000  as suppose
+				to ==> exp://9h-hcy.bacon.tickle_me_elmo.exp.direct:80 
+		Run => expo start —tunnel.  ( this worked rather  running npm run web)
+
+Lesson 13( Using the FlatList Component)
+	DOCS ==> http://reactnative.dev/docs/0.70/flatlist
+
+Lessong 14(Image Component)
+	<Image source={{url: item.source}} style={{paddingVertical: 15,}} />
+	good image source for testing  = >"http://i.pravatar.cc/400?img=3"
+
+Lesson 15(Using pull to refresh with a flatList)
+	we need to add two elements “onRefresh” and “refreshing”
+		Note this are both props that can be used by flatList
+		it can also be used by RefreshControl => safeAreaView>ScrollView
+Lesson 16 (How to use React Native Navigation)
+	URL ==> https://reactnavigation.org 
+	Installation ==> npm install @react-navigation/native 
+		Note tutorial using version 2.0 ==> npm install ( so we have an issue!!)
+		so going with the latest version 6.0
+		We need to install more libraries
+		We need the native-screens and safe-area-context=> npx expo install react-native-screens react-native-safe-area-context
+		we also need to install Native-stack == >npm install @react-navigation/native-stack
+
+	now we can import  ==> import { createBottomTabNavigator } from ‘react-navigation’ 
+——————————————————————————————————————————————
+	Note -> import { createBottomTabNavigator } from ‘react-navigation’  don’t work for version 6.x
+		we need to install native-screens, safe-area-context and Native-stack. 
+	Moving between screens -> 
+		to do this we use navigation.navigate(‘name’)=> <Button title=“Go to loc” onPress= {() => navigation.navigate(‘loc’)} />
+		To Use bottom bars with version 6.x we need to install bottom-tabs
+			npm install @react-navigation/bottom-tabs 
+			npm install @react-navigation/native ==> we need for =>import { NavigationContainer } from '@react-navigation/native';  needed to wrap T
+			Tap = createButtonTabNavigation.
+		After that, CreateButtomTabNavigation will work on import
+		import { CreateBottomTabNavigator } from ‘@react-navigation/bottom-tabs”
+			for more info goto url ==> https://reactnavigation.org/docs/bottom-tab-navigator 
+
+Lesson17 (Styling option in react Native)
+	lineheight =>text lineHeight should be height of the element for text to be aligned center.
+
+	Ability to identify even and odd==> we put indexing to work.
+	example ==> [ style.rowStyle, index % 2 > 0 ? style.itemOdd: style.itemEven ]
+
+Lesson 18 (Using Flex Box)
+	flex:1,
+        flexDirection: 'column',
+        justifyContent: 'space-evenly',
+        alignItems: 'flex-start'
+
+Lesson 19 (Build a weather app- creating the app from command line) Section 4.
+		Need to run —> npm audit fix —force.
+	create app ==> create-react-native-app —use-nom cityweather 
+		options
+			npm run android
+			- npm run ios
+			- npm run web
+			   npm start  ( best option for me.) didn’t work though. .. works well with "react-native": "~0.55.2",
+				Note ==> You need to add the sdkVersion to app.json, in the expo object ==> "sdkVersion": "27.0.0" only needed with older 
+					react-native, not needed for ==> "react-native": "0.70.5"
+			used —> expo start —tunnel.
+		we need to install expo to the application. ==> npm install —global expo-cli
+			note expo requires @expo/ngrok for tunnel support. so command will install it.
+			
+		change directory and run ==> npm start(expo start —tunnel.)
+
+Lesson 20(Planning the flow of the app and adding folders)
+	pictogram ==> He used https://www.draw.io 
+
+Lesson 21(Register with Weather Api) key ==> bdef2a67aba0ad1f25a6c19f447e6c4a
+	==> website ==> https://openweathermap.org/api 
+	example ==> https://api.openweathermap.org/data/2.5/find?q=London&units=metric&appid=5bbbc7d71e77fcb2e8f73357e4374aa9
+			—> https://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=bdef2a67aba0ad1f25a6c19f447e6c4a
+
+————————————————————————————————————————————————
+Lesson 22(Install dependencies and create home screen)
+		Note we have to use a different approach for tabs since version 2 of react-navigation is not compatible with our react version 0.7
+
+Lesson 23(Fetching data from API)
+	to set units == => &unit=metric   ==> this if for celsius 
+	
+Lesson 24(cities list)
+Lesson 25(Set array of cities and create random function)
+——————————————————————————————————————————————————
+Lesson 26(Using console to log, and start building FlatList)
+	StatusBar ->  used to control the look and feel of the status bar.
+				e.g ==> <StatusBar
+          					barStyle="default"
+          					backgroundColor="#1dafb"
+        						/>
+———————————————————————————————————
+Lesson 28(Adding style to flat list row)
+ 	Styling of the Flatlist.
+
+Lesson 29(Adding expo gradient component and touch event)
+	For gradient
+	https://docs.expo.io/versions/v28.0.0/sdk/linear-gradient 
+	—>https://docs.expo.dev/versions/latest/sdk/linear-gradient/?redirected
+
+	Touch .
+		For this we use TouchableHighlight from 'react-native'
+		We wrap everything in it.
+Lesson 30(Add condition emoji)
+	to see emojis on computer ==> type (ctrl, command, space)
+	on windows, search on line..
+Lesson 31(Adding Search Screen)
+	Adding search screen.
+
+Lesson 32(Add the tab navigation)
+	just use ==> import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+Lesson 33(Adding search screen)
+	https://api.openweathermap.org/data/2.5/weather?q=London&APPID=bdef2a67aba0ad1f25a6c19f447e6c4a&units=metric
+	
+	https://api.openweathermap.org/data/2.5/weather?q=London&APPID=bdef2a67aba0ad1f25a6c19f447e6c4a&units=metric
+
+Lesson 34(Adding search input)
+	for this we need ==> import {TextInput} from ‘react-native’
+	
+Lesson 36 (Custom fonts)
+	
+	
+
+	
+
+	
